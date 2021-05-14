@@ -1,3 +1,6 @@
 import { combineReducers } from 'redux';
 
-export default combineReducers({});
+import auth from './auth/reducer.js';
+import states from './states/reducer.js';
+
+export default combineReducers({ auth, states });

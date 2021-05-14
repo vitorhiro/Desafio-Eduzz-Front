@@ -12,6 +12,8 @@ import useStyles from './styles';
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorEmail, setErrorEmail] = useState(false);
+  const [errorPassword, setErrorPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [alertVisible, setAlertVisible] = useState(false);
   const [messageAlert, setMessageAlert] = useState('');
@@ -20,10 +22,21 @@ function Login() {
   const classes = useStyles();
 
   const handleLogin = async () => {
+    if (!email) {
+      setErrorEmail(true);
+      setMessageAlert('Por favor preencha seu email');
+      return setAlertVisible(true);
+    }
+    if (!password) {
+      setErrorPassword(true);
+      setMessageAlert('Por favor preencha sua senha');
+      return setAlertVisible(true);
+    }
     try {
       const { data } = await api.signInRequest({ email, password });
 
-      return dispatch(signInSucess(data.token));
+      dispatch(signInSucess(data.token));
+      return history.push('/inicial');
     } catch (error) {
       setTypeError('error');
       if (error?.response?.data?.message) {
@@ -60,6 +73,8 @@ function Login() {
             label="E-mail"
             onChange={e => setEmail(e.target.value)}
             className={classes.input}
+            error={errorEmail}
+            onFocus={() => setErrorEmail(false)}
           />
         </div>
         <div className={classes.inputArea}>
@@ -68,6 +83,8 @@ function Login() {
             label="Senha"
             onChange={e => setPassword(e.target.value)}
             className={classes.input}
+            error={errorPassword}
+            type="password"
           />
         </div>
 

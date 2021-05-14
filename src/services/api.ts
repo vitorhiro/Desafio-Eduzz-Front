@@ -7,7 +7,7 @@ const api = axios.create({
 
 export default {
   async signInRequest(data: signInDataType) {
-    const response = await api.get('/login', { data });
+    const response = await api.post('/login', data);
 
     return response;
   },
