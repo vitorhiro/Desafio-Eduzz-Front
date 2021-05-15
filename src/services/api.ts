@@ -17,4 +17,28 @@ export default {
 
     return response;
   },
+
+  async getBalance(token: string) {
+    const response = await api.get('/account/balance', {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    return response;
+  },
+
+  async getBtcPrice(token: string) {
+    const response = await api.get('/btc/price', {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    return response;
+  },
+
+  async getVolume(token: string) {
+    const response = await api.get('/volume', {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    return response;
+  },
 };

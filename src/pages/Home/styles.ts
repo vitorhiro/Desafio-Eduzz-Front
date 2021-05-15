@@ -9,6 +9,19 @@ const useStyles = makeStyles({
     minWidth: '100%',
     padding: 0,
   },
+  cardArea: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  card: {
+    display: 'flex',
+    width: '80%',
+    justifyContent: 'space-between',
+    padding: 40,
+    top: 150,
+    position: 'absolute',
+  },
 });
 
 export default useStyles;

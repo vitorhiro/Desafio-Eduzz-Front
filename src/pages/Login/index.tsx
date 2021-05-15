@@ -1,6 +1,12 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Container, Card, TextField, Button } from '@material-ui/core';
+import {
+  Container,
+  Card,
+  TextField,
+  Button,
+  CircularProgress,
+} from '@material-ui/core';
 
 import api from '../../services/api';
 import history from '../../services/history';
@@ -55,7 +61,7 @@ function Login() {
   };
 
   return loading ? (
-    <span>Carregando...</span>
+    <CircularProgress />
   ) : (
     <Container className={classes.container}>
       <Alerts

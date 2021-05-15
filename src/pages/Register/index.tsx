@@ -1,4 +1,10 @@
-import { Button, Card, Container, TextField } from '@material-ui/core';
+import {
+  Button,
+  Card,
+  CircularProgress,
+  Container,
+  TextField,
+} from '@material-ui/core';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
@@ -69,7 +75,7 @@ export default function Register() {
     }
   };
   return loading ? (
-    <span>Carregando...</span>
+    <CircularProgress />
   ) : (
     <Container className={classes.container}>
       <Alerts
